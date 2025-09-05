@@ -9,13 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7146899451932660738}
+  - component: {fileID: 8684466776648730177}
   - component: {fileID: 1102079542912300084}
   - component: {fileID: 4692911547900399442}
-  - component: {fileID: 1985074071823631240}
-  - component: {fileID: 1339392449649898313}
   - component: {fileID: 5800327052632621501}
-  - component: {fileID: 3504940743916061423}
-  - component: {fileID: 8684466776648730177}
+  - component: {fileID: 5277940651692834768}
+  - component: {fileID: 1985074071823631240}
+  - component: {fileID: 7562009382114309186}
+  - component: {fileID: 8349499951126643933}
+  - component: {fileID: 2736331191459116249}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -38,6 +40,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8684466776648730177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961409233668524084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!95 &1102079542912300084
 Animator:
   serializedVersion: 7
@@ -115,34 +147,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1985074071823631240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7961409233668524084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b2c8e7b10f6864d8e8324ef64453fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minBlinkWait: 3
-  maxBlinkWait: 7
---- !u!114 &1339392449649898313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7961409233668524084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acfb0b20a6e4988488998231cae6b21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 120
-  maxVelocity: 2.5
 --- !u!50 &5800327052632621501
 Rigidbody2D:
   serializedVersion: 5
@@ -155,8 +159,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDamping: 0.5
+  m_Mass: 50
+  m_LinearDamping: 0.8
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -168,10 +172,10 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &3504940743916061423
-CapsuleCollider2D:
+--- !u!61 &5277940651692834768
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -204,10 +208,19 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00033175945, y: -0.05531238}
-  m_Size: {x: 0.14528775, y: 0.49250147}
-  m_Direction: 0
---- !u!114 &8684466776648730177
+  m_Offset: {x: -0.002650559, y: -0.11140375}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.22931683, y: 0.38616666}
+  m_EdgeRadius: 0
+--- !u!114 &1985074071823631240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,24 +229,59 @@ MonoBehaviour:
   m_GameObject: {fileID: 7961409233668524084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: e0b2c8e7b10f6864d8e8324ef64453fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  minBlinkWait: 3
+  maxBlinkWait: 7
+--- !u!114 &7562009382114309186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961409233668524084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ed731e27fe58a48b96463f97a8e13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4692911547900399442}
+  animator: {fileID: 1102079542912300084}
+  force: 1200
+  maxXVelocity: 2.5
+  maxYVelocity: 7
+--- !u!114 &8349499951126643933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961409233668524084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db161cfd226a76d4fbb18c026ba78047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1102079542912300084}
+  jumpForce: 200
+  coyoteTime: 0.1
+  fallingGravityScale: 1.4
+--- !u!114 &2736331191459116249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961409233668524084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8738e0d0d635364a826c95285d930ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinDepth: 0.02
+  rayLength: 0.05
+  col: {fileID: 5277940651692834768}
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 64
