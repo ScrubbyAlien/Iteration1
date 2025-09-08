@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,6 +8,9 @@ using UnityEngine;
 [RequireComponent(typeof(ContactHandler))]
 public class PlayerJump : MonoBehaviour
 {
+    public event Action OnJumpStart;
+    public event Action OnJumpLand;
+
     private Rigidbody2D body;
     private ContactHandler contact;
 
@@ -20,11 +24,13 @@ public class PlayerJump : MonoBehaviour
     private float fallingGravityScale;
 
     // private Cooldown coyote;
-    // private Cooldown jumpDelay;
+    private Cooldown jumpDelay;
 
-    // private bool jumped;
+    public bool jumped { private set; get; }
 
     // private bool canJump => (contact.grounded || coyote.on) && !jumped;
+
+    private float baseColliderSize;
 
     private Vector2 contactpoint;
 
@@ -32,7 +38,7 @@ public class PlayerJump : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         contact = GetComponent<ContactHandler>();
         // coyote = new Cooldown(coyoteTime);
-        // jumpDelay = new Cooldown(0.1f);
+        jumpDelay = new Cooldown(0.1f);
     }
 
     void FixedUpdate() {
@@ -40,6 +46,11 @@ public class PlayerJump : MonoBehaviour
 
         if (body.linearVelocityY < -0.01f) body.gravityScale = fallingGravityScale;
         else body.gravityScale = 1;
+
+        if (contact.grounded && !jumpDelay.on) {
+            jumped = false;
+            OnJumpLand.Invoke();
+        }
 
         animator.SetBool("grounded", contact.grounded);
     }
@@ -49,8 +60,9 @@ public class PlayerJump : MonoBehaviour
         if (contact.grounded) {
             body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             animator.SetTrigger("jump");
-            // jumped = true;
-            // jumpDelay.Start();
+            jumped = true;
+            jumpDelay.Start();
+            OnJumpStart.Invoke();
             // coyote.Stop();
         }
     }

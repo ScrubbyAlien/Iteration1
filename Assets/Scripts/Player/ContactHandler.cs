@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class ContactHandler : MonoBehaviour
@@ -10,6 +11,7 @@ public class ContactHandler : MonoBehaviour
     public bool grounded { get; private set; }
     public bool touchingLeft { get; private set; }
     public bool touchingRight { get; private set; }
+    // public bool halfGrounded { get; private set; }
 
     [SerializeField]
     private Collider2D col;
@@ -27,6 +29,9 @@ public class ContactHandler : MonoBehaviour
     private Vector2 rightOrigin;
     private Vector2 rightTopOrigin;
     private Vector2 rightBottomOrigin;
+
+    private Vector2 rightCornerOrigin;
+    private Vector2 leftCornerOrigin;
 
     // Update is called once per frame
     void FixedUpdate() {
@@ -48,9 +53,15 @@ public class ContactHandler : MonoBehaviour
         RaycastHit2D rightHit2 = Physics2D.Raycast(rightOrigin, Vector2.right, rayLength, collisionLayers);
         RaycastHit2D rightHit3 = Physics2D.Raycast(rightBottomOrigin, Vector2.right, rayLength, collisionLayers);
 
-        grounded = groundHit1.collider || groundHit2.collider || groundHit3.collider;
-        touchingLeft = leftHit1.collider || leftHit2.collider || leftHit3.collider;
-        touchingRight = rightHit1.collider || rightHit2.collider || rightHit3.collider;
+        // Vector2 downRight = (Vector2.right + Vector2.down).normalized;
+        // Vector2 downLeft = (Vector2.left + Vector2.down).normalized;
+        // RaycastHit2D rightCorner = Physics2D.Raycast(rightCornerOrigin, downRight, rayLength, collisionLayers);
+        // RaycastHit2D leftCorner = Physics2D.Raycast(leftCornerOrigin, downLeft, rayLength, collisionLayers);
+
+        grounded = AnyColliders(groundHit1, groundHit2, groundHit3);
+        // halfGrounded = AnyColliders(rightCorner, leftCorner);
+        touchingLeft = AnyColliders(leftHit1, leftHit2, leftHit3);
+        touchingRight = AnyColliders(rightHit1, rightHit2, rightHit3);
     }
 
     // private void OnDrawGizmosSelected() {
@@ -78,5 +89,12 @@ public class ContactHandler : MonoBehaviour
         rightTopOrigin = new Vector2(rightOriginX, col.bounds.max.y - skinDepth);
         rightOrigin = new Vector2(rightOriginX, col.bounds.center.y);
         rightBottomOrigin = new Vector2(rightOriginX, col.bounds.min.y + skinDepth);
+
+        rightCornerOrigin = new Vector2(rightOriginX, downOriginY);
+        leftCornerOrigin = new Vector2(leftOriginX, downOriginY);
+    }
+
+    private bool AnyColliders(params RaycastHit2D[] hits) {
+        return hits.Where(h => h.collider).Any();
     }
 }
