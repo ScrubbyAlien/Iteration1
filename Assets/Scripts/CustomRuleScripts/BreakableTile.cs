@@ -6,8 +6,6 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu]
 public class BreakableTile : RuleTile<BreakableTile.Neighbor>
 {
-    public float strength;
-
     public class Neighbor : RuleTile.TilingRule.Neighbor
     {
         public const int Null = 3;

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -14,14 +16,13 @@ public class SpiritBomb : MonoBehaviour
 
     private bool detonated;
 
-    private Tilemap _dtmp;
-    private Tilemap destructableTilemap {
+    private Tilemap _tm;
+    private Tilemap tilemap {
         get {
-            if (_dtmp) return _dtmp;
+            if (_tm) return _tm;
             else {
-                _dtmp = GameObject.FindObjectsByType<Tilemap>(FindObjectsSortMode.None)
-                                  .Where(o => o.gameObject.tag == "Destructable").First();
-                return _dtmp;
+                _tm = GameObject.FindGameObjectWithTag("MainTileMap").GetComponent<Tilemap>();
+                return _tm;
             }
         }
     }
@@ -38,17 +39,17 @@ public class SpiritBomb : MonoBehaviour
     }
 
     private void Detonate() {
-        if (destructableTilemap) {
-            Vector3Int bombcell = destructableTilemap.layoutGrid.WorldToCell(transform.position);
+        if (tilemap) {
+            Vector3Int bombcell = tilemap.layoutGrid.WorldToCell(transform.position);
             // Debug.Log(destructableTilemap.GetTile<BreakableTile>(Vector3Int.zero));
-            TileChangeData[] cellsToExplode = GetTileChangeDatas(bombcell);
-            destructableTilemap.SetTiles(cellsToExplode, true);
+            List<TileChangeData> cellsToExplode = GetTileChangeDatas(bombcell);
+            tilemap.SetTiles(cellsToExplode.ToArray(), true);
         }
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
-    private TileChangeData[] GetTileChangeDatas(Vector3Int origin) {
+    private List<TileChangeData> GetTileChangeDatas(Vector3Int origin) {
         Vector3Int[] cells = new Vector3Int[13];
         cells[0] = origin; // 0 0
         cells[1] = new Vector3Int(origin.x, origin.y + 1); // 0 1
@@ -64,9 +65,11 @@ public class SpiritBomb : MonoBehaviour
         cells[11] = new Vector3Int(origin.x + 2, origin.y); // 2 0
         cells[12] = new Vector3Int(origin.x - 2, origin.y); // -2 0
 
-        TileChangeData[] datas = new TileChangeData[13];
+        List<TileChangeData> datas = new();
         for (int i = 0; i < 13; i++) {
-            datas[i] = new TileChangeData() { position = cells[i], tile = ScriptableObject.CreateInstance<Tile>() };
+            if (tilemap.GetTile(cells[i]) is BreakableTile) {
+                datas.Add(new TileChangeData() { position = cells[i], tile = ScriptableObject.CreateInstance<Tile>() });
+            }
         }
         return datas;
     }
