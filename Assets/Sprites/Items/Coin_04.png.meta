@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 23646af65eea38f46a63b3c9c3438361
+guid: 1f74690ae948831418deb2ca8b7231d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7423200240788606658
-    second: Bridge-Double_0
+      213: 3185628913893671781
+    second: Coin_04_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,17 +46,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -100,38 +100,33 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bridge-Double_0
+      name: Coin_04_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 94
-        width: 128
-        height: 34
+        x: 44
+        y: 2
+        width: 40
+        height: 124
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e317337f5be7bf890800000000000000
-      internalID: -7423200240788606658
+      spriteID: 56388d67e90a53c20800000000000000
+      internalID: 3185628913893671781
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape:
-    - - {x: 64, y: 64}
-      - {x: -64, y: 64}
-      - {x: -64, y: 64}
-      - {x: -64, y: 53}
-      - {x: 64, y: 53}
+    physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -139,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Bridge-Double_0: -7423200240788606658
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

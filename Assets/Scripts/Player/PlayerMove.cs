@@ -36,6 +36,7 @@ public class PlayerMove : MonoBehaviour
 
     // 1 = facing right, -1 = facing left;
     private int side = 1;
+    public int facingSide => side;
 
     void Start() {
         body = GetComponent<Rigidbody2D>();
