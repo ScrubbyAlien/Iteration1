@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b0a909714af00d4892b15973b008559, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: 4c5bb4492d08aa845a6c3a55d15b422b, type: 3}
+  m_Name: PlayerHealth
   m_EditorClassIdentifier: 
-  health: 5
-  bombs: 3
+  startingHealth: 5

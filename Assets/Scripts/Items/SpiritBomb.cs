@@ -44,6 +44,14 @@ public class SpiritBomb : MonoBehaviour
             // Debug.Log(destructableTilemap.GetTile<BreakableTile>(Vector3Int.zero));
             List<TileChangeData> cellsToExplode = GetTileChangeDatas(bombcell);
             tilemap.SetTiles(cellsToExplode.ToArray(), true);
+
+            Health[] healthObjects = FindObjectsByType<Health>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            float radius = tilemap.layoutGrid.cellSize.x * 2.5f;
+            foreach (Health health in healthObjects) {
+                if ((health.transform.position - transform.position).sqrMagnitude < radius * radius) {
+                    health.TakeDamage(1);
+                }
+            }
         }
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
