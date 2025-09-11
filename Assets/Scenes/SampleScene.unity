@@ -5638,6 +5638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1157390456}
+  - component: {fileID: 1157390457}
   m_Layer: 5
   m_Name: Bomb
   m_TagString: Untagged
@@ -5667,6 +5668,22 @@ RectTransform:
   m_AnchoredPosition: {x: 280, y: -120}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1157390457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157390455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761300b99543f8144844a8bdcd5615c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intStat: {fileID: 11400000, guid: ea56893c44cfd5842b28709062673d8e, type: 2}
+  text: {fileID: 126510217}
+  minDisplayValue: 0
+  maxDisplayValue: 99
 --- !u!1 &1221426310
 GameObject:
   m_ObjectHideFlags: 0

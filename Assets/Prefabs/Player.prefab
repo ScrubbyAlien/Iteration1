@@ -338,6 +338,7 @@ MonoBehaviour:
   launchAngle: 5
   launchForce: 60
   spritBombPrefab: {fileID: 1295389576329946047, guid: afd0cac8ef1861d4197db9af0ecc9fc2, type: 3}
+  spiritBombStore: {fileID: 11400000, guid: ea56893c44cfd5842b28709062673d8e, type: 2}
   move: {fileID: 7562009382114309186}
 --- !u!114 &6154557478912784019
 MonoBehaviour:

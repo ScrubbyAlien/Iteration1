@@ -22,6 +22,7 @@ public class FollowObject : MonoBehaviour
     private float minY, maxY;
 
     private Vector3 targetPosition;
+    private Vector3 offset;
 
     private Rigidbody2D body;
 
@@ -30,6 +31,7 @@ public class FollowObject : MonoBehaviour
         if (body) {
             body.bodyType = RigidbodyType2D.Kinematic;
         }
+        offset = transform.position - follow.position;
     }
 
     private void OnValidate() {
@@ -44,10 +46,10 @@ public class FollowObject : MonoBehaviour
 
         switch (behaviour) {
             case FollowBehaviour.Dampened:
-                transform.position = Vector3.Lerp(transform.position, targetPosition, dampening);
+                transform.position = Vector3.Lerp(transform.position, targetPosition, dampening) + offset;
                 break;
             case FollowBehaviour.Parallax:
-                transform.position = GetParallaxPosition();
+                transform.position = GetParallaxPosition() + offset;
                 break;
             default: break;
         }

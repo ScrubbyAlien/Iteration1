@@ -14,10 +14,14 @@ public class ItemManager : MonoBehaviour
     private Item spritBombPrefab;
 
     [SerializeField]
+    private ItemStore spiritBombStore;
+
+    [SerializeField]
     private PlayerMove move;
 
     private void Start() {
         baseXPos = launcher.localPosition.x;
+        spiritBombStore.Initialize();
     }
 
     private void Update() {
@@ -26,10 +30,12 @@ public class ItemManager : MonoBehaviour
     }
 
     public void OnBomb() {
-        // todo: make sure the launcher is not inside other collider
-        Item bomb = Instantiate(spritBombPrefab, launcher.position, Quaternion.identity);
-        bomb.transform.position += Vector3.back;
-        bomb.Launch(CalculateForceVector());
+        if (Physics2D.OverlapPoint(launcher.position)) return;
+        if (spiritBombStore.Use()) {
+            Item bomb = Instantiate(spritBombPrefab, launcher.position, Quaternion.identity);
+            bomb.transform.position += Vector3.back;
+            bomb.Launch(CalculateForceVector());
+        }
     }
 
     private Vector2 CalculateForceVector() {

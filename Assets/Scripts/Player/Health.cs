@@ -10,15 +10,15 @@ public class Health : MonoBehaviour
 
     private void Start() {
         stats.Initialize();
-        stats.OnReachZeroHealth += AtZeroHealth;
+        stats.StatChanged += HealthChanged;
     }
 
     private void OnDestroy() {
-        stats.OnReachZeroHealth -= AtZeroHealth;
+        stats.StatChanged -= HealthChanged;
     }
 
-    private void AtZeroHealth() {
-        OnDie.Invoke();
+    private void HealthChanged(int newValue) {
+        if (newValue <= 0) OnDie.Invoke();
     }
 
     public void TakeDamage(int value) {
