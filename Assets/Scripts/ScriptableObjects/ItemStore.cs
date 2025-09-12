@@ -8,7 +8,6 @@ public class ItemStore : Stats<int>
     private int currentAmount;
 
     public bool Use() {
-        Debug.Log($"Use one from {currentAmount}");
         if (currentAmount > 0) {
             currentAmount--;
             InvokeStatChanged(currentAmount);

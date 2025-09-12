@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class FollowObject : MonoBehaviour
@@ -8,10 +9,11 @@ public class FollowObject : MonoBehaviour
     [SerializeField]
     private FollowBehaviour behaviour;
 
-    [SerializeField, Range(0, 1), Tooltip("0: Will not follow any movements, 1: will follow movements exactly")]
+    [SerializeField, UnityEngine.Range(0, 1),
+     Tooltip("0: Will not follow any movements, 1: will follow movements exactly")]
     private float parallax;
 
-    [SerializeField, Range(0f, 1f)]
+    [SerializeField, UnityEngine.Range(0f, 1f)]
     private float dampening;
 
     [SerializeField]
@@ -22,7 +24,6 @@ public class FollowObject : MonoBehaviour
     private float minY, maxY;
 
     private Vector3 targetPosition;
-    private Vector3 offset;
 
     private Rigidbody2D body;
 
@@ -31,7 +32,16 @@ public class FollowObject : MonoBehaviour
         if (body) {
             body.bodyType = RigidbodyType2D.Kinematic;
         }
-        offset = transform.position - follow.position;
+    }
+
+    public void SetFollow(Transform newFollow) {
+        Debug.Assert(newFollow != null, "Don't disable follow behaviour by passing null to SetFollow," +
+                                        "use SetFollowDisabled() instead.");
+        follow = newFollow;
+    }
+
+    public void SetFollowDisabled() {
+        follow = null;
     }
 
     private void OnValidate() {
@@ -40,28 +50,20 @@ public class FollowObject : MonoBehaviour
     }
 
     private void LateUpdate() {
-        if (body) return;
+        if (!follow) return;
 
         targetPosition = GetTargetPosition();
 
         switch (behaviour) {
             case FollowBehaviour.Dampened:
-                transform.position = Vector3.Lerp(transform.position, targetPosition, dampening) + offset;
+                transform.position = Vector3.Lerp(transform.position, targetPosition, dampening);
                 break;
             case FollowBehaviour.Parallax:
-                transform.position = GetParallaxPosition() + offset;
+                transform.position = GetParallaxPosition();
                 break;
             default: break;
         }
     }
-
-    // private void FixedUpdate() {
-    //     if (!body) return;
-    //
-    //     targetPosition = GetTargetPosition();
-    //
-    //     body.MovePosition(Vector3.Lerp(transform.position, targetPosition, dampening));
-    // }
 
     private Vector3 GetTargetPosition() {
         float newX = x ? Mathf.Clamp(follow.position.x, minX, maxX) : transform.position.x;
