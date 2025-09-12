@@ -8,7 +8,6 @@ public class Trigger : MonoBehaviour
     public UnityEvent<Collider2D> OnExit;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("hello");
         OnEnter.Invoke(other);
     }
 

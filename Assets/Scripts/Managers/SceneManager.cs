@@ -1,6 +1,6 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using SM = UnityEngine.SceneManagement.SceneManager;
 
 public class SceneManager : MonoBehaviour
@@ -12,26 +12,24 @@ public class SceneManager : MonoBehaviour
         delayTime = delay;
     }
 
-    public void ChangeScene(SceneAsset scene) {
+    public void ChangeScene(string sceneName) {
         if (waitingForSceneChange) {
-            Debug.LogWarning($"Attempting to load scene {scene.name} while another scene is already being loaded. " +
-                             $"{scene.name} will not be loaded.");
+            Debug.LogWarning($"Attempting to load scene {sceneName} while another scene is already being loaded. " +
+                             $"{sceneName} will not be loaded.");
             return;
         }
 
         if (delayTime > 0) {
-            StartCoroutine(ChangeSceneDelay(scene, delayTime));
+            StartCoroutine(ChangeSceneDelay(sceneName, delayTime));
         }
-        else SM.LoadScene(scene.name);
+        else SM.LoadScene(sceneName);
     }
 
-    private IEnumerator ChangeSceneDelay(SceneAsset scene, float time) {
-        Debug.Log("starting coroutine");
+    private IEnumerator ChangeSceneDelay(string sceneName, float time) {
         waitingForSceneChange = true;
         yield return new WaitForSecondsRealtime(time);
         waitingForSceneChange = false;
         delayTime = 0;
-        Debug.Log("ending coroutine");
-        SM.LoadScene(scene.name);
+        SM.LoadScene(sceneName);
     }
 }
