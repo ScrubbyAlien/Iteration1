@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9058984391181758820}
   - component: {fileID: 1295389576329946047}
   - component: {fileID: -3690523977430465441}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpiritBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ CircleCollider2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

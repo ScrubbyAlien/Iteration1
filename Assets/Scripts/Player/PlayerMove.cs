@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(ContactHandler))]
 public class PlayerMove : MonoBehaviour
 {
+    public event Action<int> OnChangeSide;
+
     private ContactHandler contact;
     private Rigidbody2D body;
     private PlayerJump jump;
@@ -36,7 +39,6 @@ public class PlayerMove : MonoBehaviour
 
     // 1 = facing right, -1 = facing left;
     private int side = 1;
-    public int facingSide => side;
 
     void Start() {
         body = GetComponent<Rigidbody2D>();
@@ -68,7 +70,11 @@ public class PlayerMove : MonoBehaviour
         animator.SetBool("walking", Mathf.Abs(currentInput) > 0 && !sprinting);
 
         // update which side the player is facing
-        if (currentInput != 0) side = currentInput > 0 ? 1 : -1;
+        if (currentInput != 0) {
+            int newSide = currentInput > 0 ? 1 : -1;
+            if (side != newSide) OnChangeSide?.Invoke(newSide);
+            side = newSide;
+        }
         if (spriteRenderer) spriteRenderer.flipX = side < 0;
     }
 

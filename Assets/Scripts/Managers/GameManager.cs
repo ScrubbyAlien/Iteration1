@@ -7,17 +7,24 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject player;
     [SerializeField]
-    private Vector2 playerStartPosition;
+    private Vector3 playerStartPosition;
     [SerializeField, Min(0)]
     private float playerInputActiveDelay;
+    [SerializeField]
+    private bool resetItemStoresAndHealth;
 
     private PlayerInput playerInput;
 
-    private void Start() {
+    private void Awake() {
         player.transform.position = playerStartPosition;
         playerInput = player.GetComponent<PlayerInput>();
         playerInput.DeactivateInput();
         StartCoroutine(DelayInputActivation());
+
+        if (resetItemStoresAndHealth) {
+            player.GetComponent<ItemManager>().ResetStore();
+            player.GetComponent<PlayerHealth>().ResetHealth();
+        }
     }
 
     private IEnumerator DelayInputActivation() {

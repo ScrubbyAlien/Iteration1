@@ -462,6 +462,10 @@ PrefabInstance:
       value: 23.3
       objectReference: {fileID: 0}
     - target: {fileID: 1952606664147841088, guid: 05203096ae4e2434b9a81f6904c989fa, type: 3}
+      propertyPath: playerStartPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952606664147841088, guid: 05203096ae4e2434b9a81f6904c989fa, type: 3}
       propertyPath: playerInputActiveDelay
       value: 3
       objectReference: {fileID: 0}

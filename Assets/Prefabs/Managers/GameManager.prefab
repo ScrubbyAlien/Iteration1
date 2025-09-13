@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ba6ae84aca70947b9ba0b82a28fab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7961409233668524084, guid: d5ec4508d6aa7c245b6d9b63c79e1193, type: 3}
-  playerStartPosition: {fileID: 8698525786467294496}
+  player: {fileID: 0}
+  playerStartPosition: {x: 0, y: 0, z: 0}
   playerInputActiveDelay: 3
+  resetItemStoresAndHealth: 0
 --- !u!1 &6394279238088147465
 GameObject:
   m_ObjectHideFlags: 0

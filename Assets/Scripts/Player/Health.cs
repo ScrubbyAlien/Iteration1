@@ -1,43 +1,34 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public abstract class Health : MonoBehaviour
 {
     public UnityEvent OnDie;
 
     [SerializeField]
-    private HealthStats stats;
-    [SerializeField]
-    private DamagePort damagePort;
+    protected DamagePort damagePort;
 
-    private void Start() {
-        stats.Initialize();
-        stats.StatChanged += HealthChanged;
+    protected virtual void Start() {
         damagePort.OnExplosion += OnExplosion;
     }
 
-    private void OnDestroy() {
-        stats.StatChanged -= HealthChanged;
+    protected virtual void OnDestroy() {
         damagePort.OnExplosion -= OnExplosion;
     }
 
-    private void HealthChanged(int newValue) {
-        if (newValue <= 0) OnDie.Invoke();
+    protected virtual void HealthChanged(int newValue) {
+        if (newValue <= 0) {
+            OnDie.Invoke();
+        }
     }
 
-    public void TakeDamage(int value) {
-        stats.DealDamage(value);
-    }
+    public abstract void TakeDamage(int value);
 
-    public void Heal(int value) {
-        stats.RecoverHealth(value);
-    }
+    public abstract void Heal(int value);
 
-    public void Kill() {
-        stats.SetHealth(0);
-    }
+    public abstract void Kill();
 
-    private void OnExplosion(Vector3 origin, float radius, int damage, GameObject _) {
+    protected virtual void OnExplosion(Vector3 origin, float radius, int damage, GameObject _) {
         if ((transform.position - origin).sqrMagnitude <= radius) {
             TakeDamage(damage);
         }

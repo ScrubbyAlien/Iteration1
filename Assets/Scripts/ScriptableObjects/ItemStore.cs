@@ -30,12 +30,20 @@ public class ItemStore : Stats<int>
         InvokeStatChanged(currentAmount);
     }
 
-    public void Initialize() {
-        currentAmount = startingAmount;
-    }
-
     /// <inheritdoc />
     public override int ReadStat() {
         return currentAmount;
+    }
+
+    /// <inheritdoc />
+    protected override void InitializeStat() {
+        currentAmount = startingAmount;
+        InvokeStatChanged(currentAmount);
+    }
+
+    /// <inheritdoc />
+    protected override void ResetStat() {
+        currentAmount = 0;
+        InvokeStatChanged(currentAmount);
     }
 }
