@@ -368,3 +368,4 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   stats: {fileID: 11400000, guid: e138d04462b034046ac3863fc6a6927e, type: 2}
+  damagePort: {fileID: 11400000, guid: 50356920e8800714daa8e5f863de6f11, type: 2}

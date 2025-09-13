@@ -7,14 +7,18 @@ public class Health : MonoBehaviour
 
     [SerializeField]
     private HealthStats stats;
+    [SerializeField]
+    private DamagePort damagePort;
 
     private void Start() {
         stats.Initialize();
         stats.StatChanged += HealthChanged;
+        damagePort.OnExplosion += OnExplosion;
     }
 
     private void OnDestroy() {
         stats.StatChanged -= HealthChanged;
+        damagePort.OnExplosion -= OnExplosion;
     }
 
     private void HealthChanged(int newValue) {
@@ -27,5 +31,11 @@ public class Health : MonoBehaviour
 
     public void Heal(int value) {
         stats.RecoverHealth(value);
+    }
+
+    private void OnExplosion(Vector3 origin, float radius, int damage, GameObject _) {
+        if ((transform.position - origin).sqrMagnitude <= radius) {
+            TakeDamage(damage);
+        }
     }
 }

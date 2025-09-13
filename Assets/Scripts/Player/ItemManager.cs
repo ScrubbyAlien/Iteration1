@@ -37,7 +37,6 @@ public class ItemManager : MonoBehaviour
             bomb.Launch(CalculateForceVector());
         }
     }
-
     private Vector2 CalculateForceVector() {
         float launchVectorX = Mathf.Cos(launchAngle * Mathf.Deg2Rad);
         float launchVectorY = Mathf.Sin(launchAngle * Mathf.Deg2Rad);

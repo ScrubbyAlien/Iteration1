@@ -634,6 +634,7 @@ GameObject:
   - component: {fileID: 7226690196028192773}
   - component: {fileID: 450456690319251940}
   - component: {fileID: 3138398947079379930}
+  - component: {fileID: 5984577952985165342}
   m_Layer: 6
   m_Name: LevelFrame
   m_TagString: MainTileMap
@@ -113666,3 +113667,18 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 7511970203628931388}
+--- !u!114 &5984577952985165342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511970203628931388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f1746811e904c438ac1d6bc644cc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 1012040613071688265}
+  tilemap: {fileID: 2836030289634636219}
+  destructionPort: {fileID: 11400000, guid: e1fbc398dc6cb0749af66b0b2fbd5e6a, type: 2}

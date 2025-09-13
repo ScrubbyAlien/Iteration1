@@ -180,5 +180,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 4906383963404727393, guid: 328c7bbbbecd54e42b9d120356d6fbad, type: 3}
+  destructionPort: {fileID: 11400000, guid: e1fbc398dc6cb0749af66b0b2fbd5e6a, type: 2}
+  damagePort: {fileID: 11400000, guid: 50356920e8800714daa8e5f863de6f11, type: 2}
   fuseTime: 3
-  radius: 2
+  damageRadius: 2.5
+  affectedTerrainCoordsRelative:
+  - {x: 0, y: 0}
+  - {x: 0, y: 1}
+  - {x: 1, y: 1}
+  - {x: 1, y: 0}
+  - {x: 1, y: -1}
+  - {x: 0, y: -1}
+  - {x: -1, y: -1}
+  - {x: -1, y: 0}
+  - {x: -1, y: 1}
+  - {x: 2, y: 0}
+  - {x: -2, y: 0}
+  - {x: 0, y: 2}
+  - {x: 0, y: -2}
