@@ -33,6 +33,10 @@ public class Health : MonoBehaviour
         stats.RecoverHealth(value);
     }
 
+    public void Kill() {
+        stats.SetHealth(0);
+    }
+
     private void OnExplosion(Vector3 origin, float radius, int damage, GameObject _) {
         if ((transform.position - origin).sqrMagnitude <= radius) {
             TakeDamage(damage);

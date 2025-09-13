@@ -23,6 +23,11 @@ public class HealthStats : Stats<int>
         if (!exceedMax) currentHealth = Mathf.Min(currentHealth, startingHealth);
     }
 
+    public void SetHealth(int newHealth) {
+        currentHealth = Mathf.Max(newHealth, 0);
+        InvokeStatChanged(currentHealth);
+    }
+
     public void Initialize() {
         currentHealth = startingHealth;
     }

@@ -53,12 +53,14 @@ public class PlayerJump : MonoBehaviour
         }
 
         animator.SetBool("grounded", contact.grounded);
+        animator.SetFloat("y-velocity", body.linearVelocityY);
     }
 
     public void OnJump() {
         // maybe add sideways force if jumping while walking
         if (contact.grounded) {
             body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            Debug.Log("trigger");
             animator.SetTrigger("jump");
             jumped = true;
             jumpDelay.Start();
