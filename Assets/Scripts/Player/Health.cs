@@ -5,6 +5,7 @@ public abstract class Health : MonoBehaviour
 {
     public UnityEvent OnDie;
     public bool dead { protected set; get; }
+    public UnityEvent OnTakeDamage;
 
     [SerializeField]
     protected DamagePort damagePort;

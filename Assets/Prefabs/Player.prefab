@@ -170,8 +170,9 @@ GameObject:
   - component: {fileID: 8349499951126643933}
   - component: {fileID: 2736331191459116249}
   - component: {fileID: 7051977662359294413}
-  - component: {fileID: 6060156041240876481}
   - component: {fileID: 7602559060038158050}
+  - component: {fileID: 6060156041240876481}
+  - component: {fileID: 2644091027297273726}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -396,10 +397,10 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1015
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1015
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -454,7 +455,7 @@ MonoBehaviour:
   sprintForce: 2200
   maxXVelocityWalk: 1
   maxXVelocitySprint: 3
-  maxYVelocity: 7
+  maxYVelocity: 9
   stoppingFactor: 0.2
 --- !u!114 &8349499951126643933
 MonoBehaviour:
@@ -512,6 +513,23 @@ MonoBehaviour:
   spiritBombStore: {fileID: 11400000, guid: ea56893c44cfd5842b28709062673d8e, type: 2}
   moneyStore: {fileID: 11400000, guid: d2d3b67dd041b17409523ef838b16992, type: 2}
   move: {fileID: 7562009382114309186}
+--- !u!114 &7602559060038158050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7961409233668524084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2679b145bdc8c4f4c90e085b50d5738e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1102079542912300084}
+  move: {fileID: 7562009382114309186}
+  hitbox: {fileID: 5467761229705647914}
+  attackCooldown: 0.5
+  damage: 1
 --- !u!114 &6060156041240876481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,10 +569,26 @@ MonoBehaviour:
           m_StringArgument: Level1
           m_BoolArgument: 0
         m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2644091027297273726}
+        m_TargetAssemblyTypeName: SpriteFlicker, Assembly-CSharp
+        m_MethodName: StartFlicker
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   damagePort: {fileID: 11400000, guid: 50356920e8800714daa8e5f863de6f11, type: 2}
   stats: {fileID: 11400000, guid: e138d04462b034046ac3863fc6a6927e, type: 2}
   animatorDeadBoolName: dead
---- !u!114 &7602559060038158050
+  invincibilityTime: 1
+--- !u!114 &2644091027297273726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,11 +597,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7961409233668524084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2679b145bdc8c4f4c90e085b50d5738e, type: 3}
+  m_Script: {fileID: 11500000, guid: b9615f59e046fae419c3441c440422a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1102079542912300084}
-  move: {fileID: 7562009382114309186}
-  hitbox: {fileID: 5467761229705647914}
-  attackCooldown: 0.5
-  damage: 1
+  spriteRenderer: {fileID: 4692911547900399442}
+  flicksPerSecond: 15

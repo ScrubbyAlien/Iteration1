@@ -20,6 +20,7 @@ public class ObjectHealth : Health
     public override void TakeDamage(int value) {
         currentHealth -= value;
         HealthChanged(currentHealth);
+        OnTakeDamage?.Invoke();
     }
 
     public override void Heal(int value) {

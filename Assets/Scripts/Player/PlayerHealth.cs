@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHealth : Health
 {
@@ -6,16 +7,22 @@ public class PlayerHealth : Health
     private HealthStats stats;
     [SerializeField]
     private string animatorDeadBoolName;
+    [SerializeField]
+    private float invincibilityTime;
+    private Cooldown invincibilityCooldown;
 
     protected override void Start() {
         base.Start();
         stats.Initialize();
         stats.StatChanged += HealthChanged;
+        damagePort.OnDamagePlayer += TakeDamage;
+        invincibilityCooldown = new Cooldown(invincibilityTime);
     }
 
     protected override void OnDestroy() {
         base.OnDestroy();
         stats.StatChanged -= HealthChanged;
+        damagePort.OnDamagePlayer -= TakeDamage;
     }
 
     protected override void HealthChanged(int newValue) {
@@ -28,7 +35,11 @@ public class PlayerHealth : Health
     }
 
     public override void TakeDamage(int value) {
-        stats.DealDamage(value);
+        if (!invincibilityCooldown.on) {
+            stats.DealDamage(value);
+            invincibilityCooldown.Start();
+            OnTakeDamage?.Invoke();
+        }
     }
 
     public override void Heal(int value) {

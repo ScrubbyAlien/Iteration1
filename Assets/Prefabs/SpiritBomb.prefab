@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9058984391181758820}
   - component: {fileID: 1295389576329946047}
   - component: {fileID: -3690523977430465441}
+  - component: {fileID: 8278023451746169247}
   m_Layer: 8
   m_Name: SpiritBomb
   m_TagString: Untagged
@@ -198,3 +199,25 @@ MonoBehaviour:
   - {x: -2, y: 0}
   - {x: 0, y: 2}
   - {x: 0, y: -2}
+--- !u!95 &8278023451746169247
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6795118245852242841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5e94ee734c82f14896665dba291b015, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
