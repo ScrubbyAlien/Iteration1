@@ -226,7 +226,7 @@ BoxCollider2D:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -387,6 +387,7 @@ MonoBehaviour:
   launchForce: 60
   spritBombPrefab: {fileID: 1295389576329946047, guid: afd0cac8ef1861d4197db9af0ecc9fc2, type: 3}
   spiritBombStore: {fileID: 11400000, guid: ea56893c44cfd5842b28709062673d8e, type: 2}
+  moneyStore: {fileID: 11400000, guid: d2d3b67dd041b17409523ef838b16992, type: 2}
   move: {fileID: 7562009382114309186}
 --- !u!114 &6060156041240876481
 MonoBehaviour:

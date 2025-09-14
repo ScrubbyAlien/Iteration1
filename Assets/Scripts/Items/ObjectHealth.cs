@@ -18,7 +18,6 @@ public class ObjectHealth : Health
     }
 
     public override void TakeDamage(int value) {
-        Debug.Log("take damage");
         currentHealth -= value;
         HealthChanged(currentHealth);
     }

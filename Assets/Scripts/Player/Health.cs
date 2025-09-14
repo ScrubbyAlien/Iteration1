@@ -29,7 +29,7 @@ public abstract class Health : MonoBehaviour
     public abstract void Kill();
 
     protected virtual void OnExplosion(Vector3 origin, float radius, int damage, GameObject _) {
-        if ((transform.position - origin).sqrMagnitude <= radius) {
+        if (((Vector2)transform.position - (Vector2)origin).sqrMagnitude <= radius * radius) {
             TakeDamage(damage);
         }
     }

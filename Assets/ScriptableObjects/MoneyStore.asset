@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b85f179507e35e43a209d1b468711bf, type: 3}
-  m_Name: DamagePort
+  m_Script: {fileID: 11500000, guid: b8a5fd64ce0b193499af5c803ca3586a, type: 3}
+  m_Name: MoneyStore
   m_EditorClassIdentifier: 
-  cellSize: 0.5
+  startingAmount: 0

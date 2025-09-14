@@ -14,7 +14,7 @@ public class ItemManager : MonoBehaviour
     private Item spritBombPrefab;
 
     [SerializeField]
-    private ItemStore spiritBombStore;
+    private ItemStore spiritBombStore, moneyStore;
 
     [SerializeField]
     private PlayerMove move;
@@ -58,5 +58,6 @@ public class ItemManager : MonoBehaviour
 
     public void ResetStore() {
         spiritBombStore.Reset();
+        moneyStore.Reset();
     }
 }

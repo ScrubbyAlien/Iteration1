@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Barrel
+  m_Name: Crate
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -31,6 +31,6 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  m_InstancedGameObject: {fileID: 2829987273131624229, guid: fb3a805879158e64fabff7ba0d739622, type: 3}
+  m_InstancedGameObject: {fileID: 1638894812327757250, guid: 9ae9c72700c15044b8fe9440692e5a6e, type: 3}
   m_Flags: 3
   m_ColliderType: 0

@@ -330,8 +330,8 @@
                 },
                 {
                     "name": "",
-                    "id": "7633c254-7edf-4909-adb3-7ae99f798f0c",
-                    "path": "<Keyboard>/j",
+                    "id": "8a51ce26-c0f8-46b1-8aa3-fecfb9270e69",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -341,8 +341,8 @@
                 },
                 {
                     "name": "",
-                    "id": "34af6618-4564-4a39-8d1b-ef050fdc982c",
-                    "path": "",
+                    "id": "7633c254-7edf-4909-adb3-7ae99f798f0c",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -352,8 +352,8 @@
                 },
                 {
                     "name": "",
-                    "id": "8a51ce26-c0f8-46b1-8aa3-fecfb9270e69",
-                    "path": "<Keyboard>/k",
+                    "id": "34af6618-4564-4a39-8d1b-ef050fdc982c",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
