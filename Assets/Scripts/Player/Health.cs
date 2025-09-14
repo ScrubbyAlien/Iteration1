@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public abstract class Health : MonoBehaviour
 {
     public UnityEvent OnDie;
+    public bool dead { protected set; get; }
 
     [SerializeField]
     protected DamagePort damagePort;
@@ -17,8 +18,9 @@ public abstract class Health : MonoBehaviour
     }
 
     protected virtual void HealthChanged(int newValue) {
-        if (newValue <= 0) {
+        if (newValue <= 0 && !dead) {
             OnDie.Invoke();
+            dead = true;
         }
     }
 

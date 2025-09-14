@@ -4,7 +4,7 @@ public class Spikes : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
         Health impaled = other.GetComponent<Health>();
-        if (impaled) {
+        if (impaled && !impaled.dead && !other.isTrigger) {
             impaled.Kill();
         }
     }

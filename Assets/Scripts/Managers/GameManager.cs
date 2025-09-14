@@ -1,17 +1,21 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private DeathPort deathPort;
     [SerializeField]
     private GameObject player;
     [SerializeField]
     private Vector3 playerStartPosition;
     [SerializeField, Min(0)]
     private float playerInputActiveDelay;
-    [SerializeField]
-    private bool resetItemStoresAndHealth;
+
+    public UnityEvent ResetLevel;
+    public UnityEvent LevelStart;
 
     private PlayerInput playerInput;
 
@@ -20,11 +24,15 @@ public class GameManager : MonoBehaviour
         playerInput = player.GetComponent<PlayerInput>();
         playerInput.DeactivateInput();
         StartCoroutine(DelayInputActivation());
+    }
 
-        if (resetItemStoresAndHealth) {
-            player.GetComponent<ItemManager>().ResetStore();
-            player.GetComponent<PlayerHealth>().ResetHealth();
-        }
+    private void Start() {
+        LevelStart?.Invoke();
+        deathPort.OnPlayerDeath += InvokeResetLevel;
+    }
+
+    private void OnDestroy() {
+        deathPort.OnPlayerDeath -= InvokeResetLevel;
     }
 
     private IEnumerator DelayInputActivation() {
@@ -35,5 +43,9 @@ public class GameManager : MonoBehaviour
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(playerStartPosition, 0.05f);
+    }
+
+    private void InvokeResetLevel() {
+        ResetLevel?.Invoke();
     }
 }

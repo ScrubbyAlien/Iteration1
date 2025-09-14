@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1012040613071688265}
-  levelFrame: {fileID: 0}
+  levelFrame: {fileID: 2836030289634636219}
   roomSize: {x: 15, y: 10}
   topLeftRoomCoord: {x: -38, y: 9}
   bottomRightRoomCoord: {x: 22, y: -11}
@@ -113595,7 +113595,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

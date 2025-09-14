@@ -19,10 +19,11 @@ public class PlayerHealth : Health
     }
 
     protected override void HealthChanged(int newValue) {
-        if (newValue <= 0) {
+        if (newValue <= 0 && !dead) {
             Animator animator = GetComponent<Animator>();
             if (animator) animator.SetBool(animatorDeadBoolName, true);
             OnDie.Invoke();
+            dead = true;
         }
     }
 
