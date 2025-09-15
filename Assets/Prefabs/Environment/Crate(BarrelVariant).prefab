@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7617829052398683021, guid: fb3a805879158e64fabff7ba0d739622, type: 3}
       propertyPath: drops.Array.data[0].maxDrops
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7617829052398683021, guid: fb3a805879158e64fabff7ba0d739622, type: 3}
       propertyPath: drops.Array.data[0].minDrops
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2829987273131624229, guid: fb3a805879158e64fabff7ba0d739622, type: 3}
       propertyPath: m_Name
-      value: WoodenBarrel Variant
+      value: Crate(BarrelVariant)
       objectReference: {fileID: 0}
     - target: {fileID: 7742130423054367485, guid: fb3a805879158e64fabff7ba0d739622, type: 3}
       propertyPath: m_Sprite

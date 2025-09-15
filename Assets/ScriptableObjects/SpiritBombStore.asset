@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a5fd64ce0b193499af5c803ca3586a, type: 3}
   m_Name: SpiritBombStore
   m_EditorClassIdentifier: 
-  startingAmount: 5
+  startingAmount: 3

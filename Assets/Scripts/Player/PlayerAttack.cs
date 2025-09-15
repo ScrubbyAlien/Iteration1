@@ -39,6 +39,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
+        if (other.isTrigger) return;
         Health health = other.GetComponent<Health>();
         if (health) health.TakeDamage(damage);
     }
