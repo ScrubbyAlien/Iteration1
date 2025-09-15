@@ -176,7 +176,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.003978029, y: -0.09191124}
+  m_Offset: {x: -0.009535465, y: -0.09191124}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -186,7 +186,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.024016708, y: 0.2700634}
+  m_Size: {x: 0.15915293, y: 0.2700634}
   m_EdgeRadius: 0.08
 --- !u!114 &538251930307216318
 MonoBehaviour:
@@ -254,4 +254,4 @@ MonoBehaviour:
   animator: {fileID: 8282795748406773236}
   damagePort: {fileID: 11400000, guid: 50356920e8800714daa8e5f863de6f11, type: 2}
   spriteRenderer: {fileID: 3028339319062802425}
-  moveSpeed: 0.3
+  moveSpeed: 0.4

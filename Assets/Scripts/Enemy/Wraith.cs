@@ -12,6 +12,9 @@ public class Wraith : Enemy
     private Transform target;
     private bool canSeeTarget;
 
+    [SerializeField]
+    private bool debug;
+
     private void Start() {
         animator.SetBool("walking", true);
     }
@@ -44,17 +47,6 @@ public class Wraith : Enemy
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
             target = other.gameObject.transform;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other) {
-        if (target && other.gameObject == target.gameObject) {
-            RaycastHit2D obscured = Physics2D.Linecast(
-                transform.position, target.position,
-                LayerMask.GetMask("Obstacle")
-            );
-
-            canSeeTarget = !obscured.collider;
         }
     }
 
