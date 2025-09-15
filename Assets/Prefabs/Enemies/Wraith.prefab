@@ -178,7 +178,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 4
+  m_Radius: 3
 --- !u!61 &3789140508372383185
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.01364376, y: 0.025295895}
+  m_Offset: {x: -0.012573214, y: 0.013162546}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -223,7 +223,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.072445415, y: 0.16080806}
+  m_Size: {x: 0.023198444, y: 0.06945123}
   m_EdgeRadius: 0.08
 --- !u!114 &959052838399778661
 MonoBehaviour:
@@ -291,5 +291,6 @@ MonoBehaviour:
   animator: {fileID: 3118792298373055790}
   damagePort: {fileID: 11400000, guid: 50356920e8800714daa8e5f863de6f11, type: 2}
   spriteRenderer: {fileID: 8945205843941794817}
+  boxCollider: {fileID: 3789140508372383185}
   moveForce: 3
   maxVelocity: 0.9

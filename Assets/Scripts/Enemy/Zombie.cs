@@ -36,4 +36,10 @@ public class Zombie : Enemy
             spriteRenderer.flipX = side < 0;
         }
     }
+
+    /// <inheritdoc />
+    public override void Die() {
+        base.Die();
+        body.simulated = false;
+    }
 }

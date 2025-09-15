@@ -1,9 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Wraith : Enemy
 {
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private BoxCollider2D boxCollider;
 
     [SerializeField]
     private float moveForce, maxVelocity;
@@ -12,27 +15,42 @@ public class Wraith : Enemy
     private Transform target;
     private bool canSeeTarget;
 
-    [SerializeField]
-    private bool debug;
-
-    private void Start() {
-        animator.SetBool("walking", true);
-    }
+    private bool deadOnTheGround;
 
     private void FixedUpdate() {
-        if (dead) return;
+        if (dead) {
+            if (deadOnTheGround) return;
 
-        side = Vector2.Dot(body.linearVelocity.normalized, Vector2.right) > 0 ? 1 : -1;
+            float rayLength = boxCollider.bounds.extents.y + boxCollider.edgeRadius + 0.01f;
+            RaycastHit2D hitGround = Physics2D.Raycast(
+                transform.position, Vector2.down, rayLength,
+                LayerMask.GetMask("Obstacle")
+            );
+            if (hitGround) {
+                body.simulated = false;
+                deadOnTheGround = true;
+            }
+            return;
+        }
+
+        side = Vector2.Dot(body.linearVelocity.normalized, Vector2.right) >= 0 ? 1 : -1;
         spriteRenderer.flipX = side < 0;
 
         if (target) {
+            RaycastHit2D obscured = Physics2D.Linecast(
+                transform.position, target.position,
+                LayerMask.GetMask("Obstacle")
+            );
+
+            canSeeTarget = !obscured.collider;
+        }
+
+        if (target && canSeeTarget) {
             Vector2 toTarget = (target.position - transform.position).normalized;
             body.AddForce(toTarget * moveForce);
         }
 
-        if (body.linearVelocity.sqrMagnitude > maxVelocity * maxVelocity) {
-            body.linearVelocity = Vector2.ClampMagnitude(body.linearVelocity, maxVelocity);
-        }
+        body.linearVelocity = Vector2.ClampMagnitude(body.linearVelocity, maxVelocity);
 
         if (body.linearVelocity.sqrMagnitude > 0.1f * 0.1f) animator.SetBool("walking", true);
         else animator.SetBool("walking", false);
@@ -45,14 +63,16 @@ public class Wraith : Enemy
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if (target || dead) return;
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
             target = other.gameObject.transform;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (target && other.gameObject == target.gameObject) {
-            target = null;
+    private void OnTriggerStay2D(Collider2D other) {
+        if (target || dead) return;
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
+            target = other.gameObject.transform;
         }
     }
 }
