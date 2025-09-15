@@ -25,7 +25,7 @@ public class Wraith : Enemy
         side = Vector2.Dot(body.linearVelocity.normalized, Vector2.right) > 0 ? 1 : -1;
         spriteRenderer.flipX = side < 0;
 
-        if (target && canSeeTarget) {
+        if (target) {
             Vector2 toTarget = (target.position - transform.position).normalized;
             body.AddForce(toTarget * moveForce);
         }
