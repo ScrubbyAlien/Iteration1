@@ -13,7 +13,6 @@ public class PlayerHealth : Health
 
     protected override void Start() {
         base.Start();
-        stats.Initialize();
         stats.StatChanged += HealthChanged;
         damagePort.OnDamagePlayer += TakeDamage;
         invincibilityCooldown = new Cooldown(invincibilityTime);
@@ -48,9 +47,5 @@ public class PlayerHealth : Health
 
     public override void Kill() {
         stats.SetHealth(0);
-    }
-
-    public void ResetHealth() {
-        stats.Reset();
     }
 }

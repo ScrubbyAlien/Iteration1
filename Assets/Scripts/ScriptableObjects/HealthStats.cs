@@ -33,10 +33,4 @@ public class HealthStats : Stats<int>
         currentHealth = startingHealth;
         InvokeStatChanged(currentHealth);
     }
-
-    /// <inheritdoc />
-    protected override void ResetStat() {
-        currentHealth = 0;
-        InvokeStatChanged(currentHealth);
-    }
 }

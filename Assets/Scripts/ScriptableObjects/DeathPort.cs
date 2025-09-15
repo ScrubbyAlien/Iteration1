@@ -5,8 +5,10 @@ using UnityEngine;
 public class DeathPort : ScriptableObject
 {
     public event Action OnPlayerDeath;
+    public bool playerDead { get; private set; }
 
     public void TriggerPlayerDeath() {
+        playerDead = true;
         OnPlayerDeath?.Invoke();
     }
 }

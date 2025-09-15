@@ -14,7 +14,7 @@ public class ItemManager : MonoBehaviour
     private Item spritBombPrefab;
 
     [SerializeField]
-    private ItemStore spiritBombStore, moneyStore;
+    private ItemStore spiritBombStore;
 
     [SerializeField]
     private PlayerMove move;
@@ -25,7 +25,6 @@ public class ItemManager : MonoBehaviour
 
     private void Start() {
         baseXPos = launcher.localPosition.x;
-        spiritBombStore.Initialize();
         move.OnChangeSide += SwitchSide;
     }
 
@@ -82,10 +81,5 @@ public class ItemManager : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(launcher.position, 0.01f);
         Gizmos.DrawLine(launcher.position, launcher.position + (Vector3)CalculateForceVector().normalized);
-    }
-
-    public void ResetStore() {
-        spiritBombStore.Reset();
-        moneyStore.Reset();
     }
 }
