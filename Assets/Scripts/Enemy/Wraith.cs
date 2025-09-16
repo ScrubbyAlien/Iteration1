@@ -27,7 +27,6 @@ public class Wraith : Enemy
                 LayerMask.GetMask("Obstacle")
             );
             if (hitGround) {
-                body.simulated = false;
                 deadOnTheGround = true;
             }
             return;

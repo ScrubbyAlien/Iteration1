@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 112781124007118986}
   - component: {fileID: 7640555151907563692}
   - component: {fileID: 8962781923829156804}
+  - component: {fileID: 1658127781545056406}
   m_Layer: 9
   m_Name: Coin
   m_TagString: Untagged
@@ -177,3 +178,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemStore: {fileID: 11400000, guid: d2d3b67dd041b17409523ef838b16992, type: 2}
   amount: 1
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1658127781545056406}
+        m_TargetAssemblyTypeName: SoundEffect, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1658127781545056406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227224821968983026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1335086683813274a8a894e6b7bf55fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 974b7a56217a7fd4d9037fedc5cddb58, type: 3}
+  volume: 1

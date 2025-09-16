@@ -70,11 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3227224821968983026, guid: 1ba7bea793e555547a862a3a1d044e49, type: 3}
       propertyPath: m_Name
-      value: Coin Variant
+      value: Diamond(CoinVariant)
       objectReference: {fileID: 0}
     - target: {fileID: 8962781923829156804, guid: 1ba7bea793e555547a862a3a1d044e49, type: 3}
       propertyPath: amount
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 112781124007118986, guid: 1ba7bea793e555547a862a3a1d044e49, type: 3}

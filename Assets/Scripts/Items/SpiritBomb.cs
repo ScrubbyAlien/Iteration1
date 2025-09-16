@@ -30,16 +30,22 @@ public class SpiritBomb : MonoBehaviour
 
     private void Update() {
         if (Time.time >= fuseFinishTime && !detonated) {
-            detonated = true;
             Detonate();
         }
     }
 
     private void Detonate() {
+        detonated = true;
         destructionPort.DestroyTerrain(transform.position, affectedTerrainCoordsRelative);
         damagePort.CreateExplosion(transform.position, damageRadius, 1, gameObject);
 
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            Detonate();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
     private Cooldown attack;
     [SerializeField]
     private int damage;
+
+    public UnityEvent OnSwing;
 
     private void Start() {
         attack = new Cooldown(attackCooldown);
@@ -35,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
         if (!attack.on) {
             animator.SetTrigger("attack");
             attack.Start();
+            OnSwing?.Invoke();
         }
     }
 

@@ -40,6 +40,5 @@ public class Zombie : Enemy
     /// <inheritdoc />
     public override void Die() {
         base.Die();
-        body.simulated = false;
     }
 }

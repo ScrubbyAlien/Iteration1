@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ContactHandler))]
@@ -31,6 +32,18 @@ public class PlayerMove : MonoBehaviour
     private float lockedMaxVelocity;
     [SerializeField, Range(0, 1)]
     private float stoppingFactor;
+    [SerializeField]
+    private float stepsPerSecond;
+    private float timeTillNextStep {
+        get {
+            float sprintWalkRatio = maxXVelocitySprint / maxXVelocityWalk;
+            if (sprinting) return 1 / (stepsPerSecond * sprintWalkRatio);
+            return 1 / stepsPerSecond;
+        }
+    }
+    private float nextStepTime;
+
+    public UnityEvent OnStep;
 
     private float currentInput;
     private float correctedInput;
@@ -51,6 +64,13 @@ public class PlayerMove : MonoBehaviour
     private void OnDestroy() {
         jump.OnJumpStart -= LockMaxVelocity;
         jump.OnJumpLand -= UnlockMaxVelocity;
+    }
+
+    void Update() {
+        if (Mathf.Abs(currentInput) > 0 && contact.grounded && Time.time > nextStepTime) {
+            OnStep?.Invoke();
+            nextStepTime = Time.time + timeTillNextStep;
+        }
     }
 
     void FixedUpdate() {

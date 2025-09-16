@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8906525270417009047}
   - component: {fileID: 576209994336337018}
   - component: {fileID: -7617829052398683021}
+  - component: {fileID: 3583593632041497414}
   m_Layer: 8
   m_Name: WoodenBarrel
   m_TagString: Untagged
@@ -191,6 +192,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3583593632041497414}
+        m_TargetAssemblyTypeName: SoundEffect, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
   damagePort: {fileID: 11400000, guid: 50356920e8800714daa8e5f863de6f11, type: 2}
   startHealth: 1
 --- !u!114 &-7617829052398683021
@@ -212,4 +228,18 @@ MonoBehaviour:
     maxDrops: 5
   - pickup: {fileID: 6658055946054726247, guid: 1728e2d41dca3cf469c3f697000ba6a3, type: 3}
     minDrops: 1
-    maxDrops: 1
+    maxDrops: 2
+--- !u!114 &3583593632041497414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829987273131624229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1335086683813274a8a894e6b7bf55fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 89e9cc61f179243419d61913fd8673e5, type: 3}
+  volume: 0.257
