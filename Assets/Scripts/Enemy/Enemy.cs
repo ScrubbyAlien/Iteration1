@@ -9,7 +9,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     protected DamagePort damagePort;
 
-    protected bool dead = false;
+    public bool dead { get; protected set; }
 
     public virtual void Die() {
         dead = true;

@@ -45,6 +45,7 @@ public class SpiritBomb : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            if (other.gameObject.GetComponent<Enemy>().dead) return;
             Detonate();
         }
     }
